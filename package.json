@@ -2,6 +2,9 @@
   "name": "chikae-assistant-v2",
   "version": "1.0.0",
   "description": "Only bot trying to help Chikae to solve problems that are possible to solve.",
+  "engines": {
+    "node": "16.13.1"
+  },
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .ts",
