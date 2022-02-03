@@ -11,24 +11,22 @@ export default (client: Client) => {
 
     let data = welcomeData[guild.id];
 
-    if (!data) {
-      const results = await welcomeSchema.findById(guild.id);
-      if (!results) {
-        return;
-      }
-
-      const { channelId, text } = results;
-      const channel = guild.channels.cache.get(channelId) as TextChannel;
-      data = welcomeData[guild.id] = [channel, text];
+    const results = await welcomeSchema.findById(guild.id);
+    if (!results) {
+      return;
     }
 
+    const { channelId, text } = results;
+    const channel = guild.channels.cache.get(channelId) as TextChannel;
+    data = welcomeData[guild.id] = [channel, text];
+
     data[0].send({
-      content: data[1].replace(/@/g, `<@${id}>`),
+      content: data[1].replace(/{user}/g, `<@${id}>`),
     });
   });
 };
 
 export const config = {
   displayName: "Welcome Channel",
-  dbName: "WELCOME_CHANNEL",
+  dbName: "welcome",
 };

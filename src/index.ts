@@ -18,7 +18,7 @@ const client = new DiscordJS.Client({
 export const player = new Player(client, {
   ytdlOptions: {
     quality: "highestaudio",
-    highWaterMark: 1 << 25,
+    highWaterMark: 1 << 30,
     filter: "audioonly",
   },
 });
@@ -44,7 +44,7 @@ client.on("ready", () => {
     mongoUri: process.env.MONGO_URI,
     disabledDefaultCommands: [
       // 'help',
-      "command",
+      // "command",
       "language",
       // 'prefix',
       "requiredrole",
