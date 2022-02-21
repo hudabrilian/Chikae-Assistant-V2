@@ -4,6 +4,7 @@ import Levels from "../functions/level";
 
 export default (client: Client, instance: WOKCommands) => {
   client.on("messageCreate", async (message) => {
+    return;
     if (
       message.content
         .toLowerCase()
